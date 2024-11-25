@@ -1,4 +1,4 @@
-# Paige Skinner 2024
+# Paige Skinner and Sven Buerki 2024
 ### Extract the Promoter and Gene sequences for each HMG gene ####
 
 #load the necessary packages 
