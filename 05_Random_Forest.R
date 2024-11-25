@@ -7,8 +7,7 @@ library(varSelRF)
 library(ranger)
 library(vioplot)
 
-setwd("/media/Artemisia/HMG_Protein/07_HMG_Promoter")
-path <- "/media/Artemisia/HMG_Protein/07_HMG_Promoter"
+
 setwd("/path/to/your/project")
 
 #read in the frequency table showing the frequency of each motif within the promoters of genes you want to analyze
@@ -53,15 +52,13 @@ SelectedVars <- as.factor(varselrf_comp$selected.vars)
   sh <- varselrf_comp$selec.history
   message(sprintf("%s features were found as important",length(SelectedVars)))
   print(SelectedVars)
-  #paralogs only: "ngatt"  "tatcca"
-  #all: aatccaa ctctt gataa ggata ngatt tatcca
+ 
   data_simp$Taxon <- as.factor(data_simp$Taxon)
   
 
   NewRF <- ranger::ranger(as.formula(sprintf("Taxon ~ %s",paste(SelectedVars, collapse = " + "))), data = data_simp, num.trees = 50000 ,importance = "permutation")
   pz <- ranger::importance_pvalues(NewRF,method="altmann",num.permutations = 100,formula=as.formula(sprintf("Taxon ~ %s",paste(SelectedVars, collapse = " + "))),data = data_simp)
   Forest <- as.data.frame(pz)
-  #p value says NA
 
   Forest[,c(2,3)] <- Forest[,c(1,2)]
   Forest[,1] <- row.names(Forest)
@@ -81,7 +78,6 @@ row <- which(Forest$Variable == SelectedVars[i])
    Forest$Wilcox_pvalue[row] <- Wilcox1$p.value
    
 
- #pvalue is 0.0009894 (paralog)
 
  pdf(paste0(path,"/Random_Forest/sagebrushvarath_vioplot" ,i,".pdf"))
   vioplot::vioplot(OneVar, side = "left", plotCentre = "line", ylim=c(.8*min(OneVar,TwoVar),max(OneVar,TwoVar)+.2*max(OneVar,TwoVar)),col = "red", xaxt= "n",main=SelectedVars[i])# = TRUE)
@@ -99,23 +95,6 @@ dev.off()
   
   
   
-  
-  
-  
-  OneVar <- data_simp[which(data_simp$Taxon == 2131234123412342), which(colnames(data_simp) == SelectedVars[i])]
-TwoVar <- data_simp[which(data_simp$Taxon == 1239458389457986304578), which(colnames(data_simp) == SelectedVars[i])]
- Wilcox2 <- wilcox.test(as.numeric(OneVar),as.numeric(TwoVar))
- #p value is 0.002116 (paralog)
- 
- #All genes p values: 
- #aatccaa(0.001888) ctctt(0.0003809) gataa(0.02081) ggata(0.008091) ngatt(0.0002597) tatcca(0.0002597)
- 
- 
-
- pdf(paste0("Random_Forest/Cluster/sagebrushvarath_allgenes_vioplot2.pdf"))
- vioplot::vioplot(OneVar, side = "left", plotCentre = "line", ylim=c(.8*min(OneVar,TwoVar),max(OneVar,TwoVar)+.2*max(OneVar,TwoVar)),col = "red", xaxt= "n",ylab=SelectedVars[2])# = TRUE)
- vioplot::vioplot(TwoVar, side = "right", plotCentre = "line", col = "blue", add = TRUE )
-dev.off()
 
 
 
