@@ -1,0 +1,2 @@
+## IQ-TREE2 Command line code:
+iqtree2 -st AA -s /path/to/project/alignment_file -m TEST -alrt 50000 -bb 50000 -nt 10 -redo
