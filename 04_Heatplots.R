@@ -11,11 +11,13 @@ library(pheatmap)
 
 #import data that has been adjusted with type2 and type3 added
 Merged <- read.csv("Merged_motifs_words_cats_adj.csv", header = T)
+head(Merged)
 
+#remove Trash, binding site, others and TF from dataframe since these do not tell you information on the function
+#also remove ArtHMGB10 because it was discarded
 
-#remove Trash, binidng site, others and TF from dataframe since these do not tell you information on the function
 all_red <- subset(Merged, Merged$Type3 != "Trash" & Merged$Type3 != "Binding_site" & Merged$Type3 != "Others" & Merged$Type3 != "TF" & Merged$Type3 != "Flower"
-                  & Merged$Type3!= "Leaf" & Merged$Type3 != "Shoot" & Merged$Type3 != "Root")
+                  & Merged$Type3!= "Leaf" & Merged$Type3 != "Shoot" & Merged$Type3 != "Root" & Merged$Gene != "ArtHMGB10")
 
 
 #Heatplot with only the specific stress categories
@@ -27,8 +29,8 @@ tab_s <- table(specific_stress$Type3,specific_stress$Gene)
 
 # sort the genes and categories
 order_ind <- c( "Drought", "Cold","Heat","Oxygen" ,"Low-CO2","Starvation", "Stress")
-order_genes <- c("ArtHMGB1a", "ArtHMGB1b", "HMGB1", "ArtHMGB7", "HMGB7", "ArtHMGB10","HMGB10", "ArtHMGB11","HMGB11","ArtHMGB13a",
-                 "ArtHMGB13b","HMGB13", "ArtHMGB15", "HMGB15","ArtSSRP1", "SSRP1", "HMGB2", "HMGB3", "HMGB4", "HMGB5", "HMGB6", "HMGB9", "HMGB12", "HMGB14" )
+order_genes <- c("ArtHMGB1a", "ArtHMGB1b", "HMGB1", "ArtHMGB7", "HMGB7", "ArtHMGB11","HMGB11","ArtHMGB13a",
+                 "ArtHMGB13b","HMGB13", "ArtHMGB15", "HMGB15","ArtSSRP1", "SSRP1", "HMGB2", "HMGB3", "HMGB4", "HMGB5", "HMGB6", "HMGB9","HMGB10", "HMGB12", "HMGB14" )
 
 #apply sorting to table
 tab_s2 <- tab_s[order_ind,order_genes]
@@ -58,9 +60,9 @@ general <- subset(Merged, Merged$Type3 == "Biotic_stimuli" | Merged$Type3 == "Ho
 #create a frequency table to show the number of occurences of each keyword
 tab_g <- table( general$Type3,general$Gene)
 # sort the genes and categories
-order_ind <- c("Abiotic_stimuli","Light","Biotic_stimuli","Hormones","Growth","Ontology")
-order_genes <- c("ArtHMGB1a", "ArtHMGB1b", "HMGB1", "ArtHMGB7", "HMGB7", "ArtHMGB10","HMGB10", "ArtHMGB11","HMGB11","ArtHMGB13a",
-                 "ArtHMGB13b","HMGB13", "ArtHMGB15", "HMGB15","ArtSSRP1", "SSRP1", "HMGB2", "HMGB3", "HMGB4", "HMGB5", "HMGB6", "HMGB9", "HMGB12", "HMGB14" )
+order_ind <- c( "Drought", "Cold","Heat","Oxygen" ,"Low-CO2","Starvation", "Stress")
+order_genes <- c("ArtHMGB1a", "ArtHMGB1b", "HMGB1", "ArtHMGB7", "HMGB7", "ArtHMGB11","HMGB11","ArtHMGB13a",
+                 "ArtHMGB13b","HMGB13", "ArtHMGB15", "HMGB15","ArtSSRP1", "SSRP1", "HMGB2", "HMGB3", "HMGB4", "HMGB5", "HMGB6", "HMGB9","HMGB10", "HMGB12", "HMGB14" )
 
 #apply sorting to table
 tab_g2 <- tab_g[order_ind,order_genes]
