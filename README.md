@@ -8,7 +8,7 @@ Journal:
 
 DOI: 
 
-The analyses include extraction of promoter sequences 1500 bps upstream of the start codon in each gene of interest, analyses of promoter function through categorization, and a random forest analysis to determine the cis-regulatory elements that differentiate the promoter sequences between the model species (Arabidopsis thaliania) and the non-model species of interest (Artemisia tridentata). This repository is designed to ensure the reproducibility of all results presented in the paper.
+The analyses include extraction of promoter sequences 1500 bps upstream of the start codon in each gene of interest, analyses of promoter function through categorization to compare the model species (Arabidopsis thaliania) and the non-model species of interest (Artemisia tridentata). This repository is designed to ensure the reproducibility of all results presented in the paper.
 
 
 ## Prerequisites
@@ -49,7 +49,6 @@ install.packages(c("varSelRF", "ranger", "vioplot", "ggplot2”,”pheatmap”,�
 			- supporting_table_4.csv: Curated lexicon file found in doi: 
 		- NEWPLACE_Output/: Contains the output files from the NewPLACE database after entering the promoter sequences into the database and converting into csv files 						with the following column names:  	
 							Factor_or_Site_Name, Loc_Start, Strand, Signal_Sequence, SITE_#
-		- Random_Forest/: Violin plots and statistical results from random forest analysis will be output here.
 		- Sequences/: Promoter and gene sequences extracted from the scaffold fasta files will be output here. 
 
 
@@ -152,11 +151,7 @@ For questions or feedback, please contact:
                ¦   ¦--AT4G23800_Arath_PromOutput.csv             
                ¦   ¦--AT4G35570_Arath_PromOutput.csv             
                ¦   ¦--AT5G23405_Arath_PromOutput.csv             
-               ¦   °--AT5G23420_Arath_PromOutput.csv             
-               ¦--Random_Forest                                  
-               ¦   ¦--Forest_sagebrushvarath_paraloggenes_res.csv 
-               ¦   ¦--sagebrushvarath_vioplot1.pdf               
-               ¦   °--sagebrushvarath_vioplot2.pdf               
+               ¦   °--AT5G23420_Arath_PromOutput.csv                           
                °--Sequences                                      
                    ¦--Arath_HMG_promoter_geneseq.csv             
                    ¦--Gene_seq_Arath_extracted.fasta             
