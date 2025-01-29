@@ -16,9 +16,6 @@ The analyses include extraction of promoter sequences 1500 bps upstream of the s
 This code was developed using:
 - R version:  R version 4.3.2 (2023-10-31)
 - R libraries:
-  - varSelRF: Random Forest.
-  - ranger: Random Forest.
-  - vioplot: Plotting
   - ggplot2: Plotting.
   - pheatmap: Plotting.
   - seqinr: Writing fasta files.
@@ -27,7 +24,7 @@ This code was developed using:
 
 Install the required libraries using:
 R
-install.packages(c("varSelRF", "ranger", "vioplot", "ggplot2”,”pheatmap”,”seqinr”,”Biostrings”))
+install.packages(c( "ggplot2”,”pheatmap”,”seqinr”,”Biostrings”))
 
 ### Data
 
@@ -39,15 +36,15 @@ install.packages(c("varSelRF", "ranger", "vioplot", "ggplot2”,”pheatmap”,�
 		- Genome/ : Contains genomes of interest.
 			- Arabipdosis_Genome/: fasta file of full Arabidopsis thaliana genome.
 				- ncbi_Arath_HMG.csv : gff file that has been subset to include information for only the genes of interest. 
-				- Scaffolds/: fasta file is separated into individual chromosomes and output 						here
-			- IDT3_Genome/
+				- Scaffolds/: fasta file is separated into individual chromosomes and output here
+				- IDT3_Genome/
 				- Sagebrush_HMG_domains.csv : gff file that has been subset to include information for only the genes of interest. 
-				- Scaffolds/: fasta file of each individual scaffold in the sagebrush 						(Artemisia tridentata subsp. tridentata IDT3 genome)
+				- Scaffolds/: fasta file of each individual scaffold in the sagebrush (Artemisia tridentata subsp. tridentata IDT3 genome)
 		- Heatmaps/: Output of heatmap plots are placed here.
 		- Keyword_Lexicon/: 
 			- place_seq.txt: downloaded from the NewPLACE database
 			- supporting_table_4.csv: Curated lexicon file found in doi: 
-		- NEWPLACE_Output/: Contains the output files from the NewPLACE database after entering the promoter sequences into the database and converting into csv files 						with the following column names:  	
+		- NEWPLACE_Output/: Contains the output files from the NewPLACE database after entering the promoter sequences into the database and converting into csv files with the following column names:  	
 							Factor_or_Site_Name, Loc_Start, Strand, Signal_Sequence, SITE_#
 		- Sequences/: Promoter and gene sequences extracted from the scaffold fasta files will be output here. 
 
