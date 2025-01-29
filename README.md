@@ -1,6 +1,6 @@
 This repository contains the R scripts used for the analyses in the paper:
 
-"In silico Investigation of Abiotic Stress Adaptations in the High Mobility Group Protein Family with Drought-tolerant Species: Artemisia tridentata (Asteraceae) as a Model"
+"An in silico Approach to Identify Candidate Genes in a Stack of Genes: Do High Mobility Group Proteins Contribute to Phenotypic Plasticity in a Keystone Shrub?"
 
 Authors: Paige Skinner, John M. A. Wojahn, Adam Renfrow, Sven Buerki
 
