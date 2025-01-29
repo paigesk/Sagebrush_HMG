@@ -1,6 +1,10 @@
 # Paige Skinner 2024
 # Random Forest -- For each gene find which motifs differentiate Sagebrush and Arabidopsis using only the paralog genes
 
+###This code is no longer utilized in the publication associated with this reposititory
+## code was adapted from Wojahn et. al 2024
+
+
 ##Load packages
 install.packages("vioplot")
 library(varSelRF)
